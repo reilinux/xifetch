@@ -1,18 +1,17 @@
-## xifetch - CLI-tool which shows your os info.
-##### For now you can't install xifetch with any package managers. You should clone this repository.
+## xifetch
+CLI-tool which shows your os info.
 
-Support:
-<li>Linux</li>
+### Support:
+- [x] Linux
+- [ ] MacOS
+- [ ] Windows
 
-
-### Todo
-Support:
-<li>MacOS</li>
-<li>Windows</li>
+##
 
 ### Installation
 If you are using Linux, you can use it.
 Install python and pip
+
 #### Arch*
 ```
 sudo pacman -S python

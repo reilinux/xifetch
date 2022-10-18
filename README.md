@@ -23,3 +23,5 @@ sudo pacman -S python-pip
 sudo apt install python-pip
 sudo apt install python
 ```
+
+### For now you can't install xifetch with any package managers. You should clone this repository.

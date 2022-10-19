@@ -2,42 +2,52 @@
 
 import platform
 import os
-import psutil
 
 
-# gpu info
 gpu_unix_command = "lspci | grep VGA"
+
 cpu_unix_command = "cat /proc/cpuinfo | grep name"
 
-disk_info = psutil.disk_usage('/')
+memory_unix_command = {
+    "total": "free -m | grep Mem | awk '{print $2}'",
+    "used": "free -m | grep Mem | awk '{print $3}'"
+}
 
-result = os.popen(gpu_unix_command).readlines()
+disk_unix_command = {
+    "total": "df -h / | tail -n -1 | awk '{ print $2 \"\t\" }'",
+    "used": "df -h / | tail -n -1 | awk '{ print $3 \"\t\" }'"
+}
+
+gpu_info = os.popen(gpu_unix_command).readlines()
 cpu_info = os.popen(cpu_unix_command).read().split('\n')
+
+memory = {
+    "total": os.popen(memory_unix_command["total"]).read().strip(),
+    "used": os.popen(memory_unix_command["used"]).read().strip(),
+}
+
+disk = {
+    "total": os.popen(disk_unix_command["total"]).read().strip().replace('G', ' Gib'),
+    "used": os.popen(disk_unix_command["used"]).read().strip().replace('G', ' Gib'),
+}
 
 gpus = ""
 
-for num,i in enumerate(result):
-        if len(result)>1:
-                gpus += f"GPU {num}" + str(i.split("controller")[1])
-                gpus += "        "
-        else:
-                gpus += f"GPU " + str(i.split("controller:")[1]) + '        '
+for num,i in enumerate(gpu_info):
+    if len(gpu_info)>1:
+        gpus += f"GPU {num}" + str(i.split("controller")[1])
+        gpus += "        "
+    else:
+        gpus += f"GPU " + str(i.split("controller:")[1]) + '        '
 
 os_name = platform.node()
 kernel = platform.release()
-
-
-memory = {
-        'total':round(psutil.virtual_memory().total/(1024*1024)),
-        'free':round(psutil.virtual_memory().free/(1024*1024)),
-        'used':round(psutil.virtual_memory().used/(1024*1024)),
-}
 
 fetch = f"""        OS: {os_name}
         Kernel: {kernel}
         DE: {os.environ.get("DESKTOP_SESSION")}
         CPU: {cpu_info[0].split(':')[1]} ({os.cpu_count()})
-        {gpus}Disk: {round(disk_info.used/(1028**3))} GiB / {round(disk_info.total/(1028*1028*1028))} GiB
+        {gpus}Disk: {disk['used']} / {disk['total']}
         Memory: {memory['used']} MiB / {memory['total']} MiB"""
 
 print(fetch)

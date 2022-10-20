@@ -1,5 +1,5 @@
-## xifetch
-CLI-tool which shows your os info.
+## Xifetch
+Neofetch inspired, CLI-tool for view your system information.
 
 ### Support:
 - [x] Linux
@@ -7,5 +7,13 @@ CLI-tool which shows your os info.
 - [ ] Windows
 
 ##
+
+## Installation:
+### Clone using Git
+```bash
+git clone https://github.com/darclinux/xifetch
+ls ./xifetch
+python xifetch.py
+```
 
 ### For now you can't install xifetch with any package managers. You should clone this repository.

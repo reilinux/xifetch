@@ -30,8 +30,8 @@ memory = {
 }
 
 disk = {
-    "total": os.popen(disk_unix_command["total"]).read().strip().replace('G', ' Gib'),
-    "used": os.popen(disk_unix_command["used"]).read().strip().replace('G', ' Gib'),
+    "total": os.popen(disk_unix_command["total"]).read().strip().replace('G', ' GiB'),
+    "used": os.popen(disk_unix_command["used"]).read().strip().replace('G', ' GiB'),
 }
 
 gpus = ""

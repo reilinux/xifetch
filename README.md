@@ -1,4 +1,6 @@
-## Xifetch
+<p align="center">
+    <h1 align="center">X I F E T C H</h1>
+</p>
 Neofetch inspired, CLI-tool for view your system information.
 
 ### Support:

@@ -12,7 +12,7 @@ Neofetch inspired, CLI-tool for view your system information.
 ### Clone using Git
 ```bash
 git clone https://github.com/darclinux/xifetch
-ls ./xifetch
+cd xifetch
 python xifetch.py
 ```
 

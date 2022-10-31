@@ -17,5 +17,8 @@ git clone https://github.com/reilinux/xifetch
 cd xifetch
 python src/main.py
 ```
+#### Output
+![](https://i.imgur.com/u9bTMwv.png)
+
 
 ### For now you can't install xifetch with any package managers. You should clone this repository.

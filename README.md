@@ -17,6 +17,10 @@ git clone https://github.com/reilinux/xifetch
 cd xifetch
 python src/main.py
 ```
+### Copy the binary to /usr/bin
+```
+sudo cp bin/xifetch /usr/bin
+```
 #### Output
 ![](https://i.imgur.com/u9bTMwv.png)
 

@@ -5,7 +5,7 @@ import os
 
 
 gpu_unix_command = "lspci | grep VGA"
-os_unix_command = "cat /etc/os-release | grep NAME"
+os_unix_command = "cat /etc/os-release | grep PRETTY_NAME"
 cpu_unix_command = "cat /proc/cpuinfo | grep name"
 
 
@@ -19,7 +19,7 @@ disk_unix_command = {
     "used": "df -h / | tail -n -1 | awk '{ print $3 \"\t\" }'"
 }
 
-os_name = os.popen(os_unix_command).readlines()[0].split('"')[1]
+os_name = os.popen(os_unix_command).readlines()[0].split('=')[1].strip()
 
 gpu_info = os.popen(gpu_unix_command).readlines()
 cpu_info = os.popen(cpu_unix_command).read().split('\n')

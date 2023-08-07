@@ -16,7 +16,7 @@ memory_unix_command = {
 
 disk_unix_command = {
     "total": "df -h / | tail -n -1 | awk '{ print $2 \"\t\" }'",
-    "used": "df -h / | tail -n -1 | awk '{ print $4 \"\t\" }'"
+    "used": "df -h / | tail -n -1 | awk '{ print $3 \"\t\" }'"
 }
 
 os_name = os.popen(os_unix_command).readlines()[0].split('=')[1].strip()
